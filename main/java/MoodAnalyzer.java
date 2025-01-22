@@ -3,7 +3,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class MoodAnalyzer {
-    String analyzeMood(String message){
+    String message;
+    MoodAnalyzer(String message){
+        this.message = message;
+    }
+
+    String analyzeMood(){
         String reg = "happy|sad";
         Pattern p = Pattern.compile(reg, Pattern.CASE_INSENSITIVE);
         Matcher m = p.matcher(message);
@@ -29,8 +34,8 @@ public class MoodAnalyzer {
         Scanner sc = new Scanner(System.in);
         System.out.println("How are you feeling today express via a message");
         String message = sc.nextLine();
-        MoodAnalyzer obj = new MoodAnalyzer();
-        String currentMood = obj.analyzeMood(message);
+        MoodAnalyzer obj = new MoodAnalyzer(message);
+        String currentMood = obj.analyzeMood();
         if(currentMood.length()>1){
             System.out.println("User is currently feeling : "+currentMood);
         }
