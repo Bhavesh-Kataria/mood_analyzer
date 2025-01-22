@@ -4,28 +4,30 @@ import java.util.regex.Pattern;
 
 public class MoodAnalyzer {
     String message;
+
     MoodAnalyzer(String message){
         this.message = message;
     }
 
-    String analyzeMood(){
+    public String analyzeMood(){
         String reg = "happy|sad";
-        Pattern p = Pattern.compile(reg, Pattern.CASE_INSENSITIVE);
-        Matcher m = p.matcher(message);
         String mood = "";
+        Pattern p = Pattern.compile(reg, Pattern.CASE_INSENSITIVE);
         try{
+            Matcher m = p.matcher(message);
             if(m.find()){
                 if((m.group()).equals("happy")){
                     mood = "Happy";
                 }else{
                     mood = "Sad";
                 }
-            }else{
+            } else{
                 throw new InvalidMoodException("User doesn't know his current mood or is not sure about it");
             }
-
+        } catch (NullPointerException npe) {
+            System.out.println("NullPointerException : Mood cannot be null");
         } catch (InvalidMoodException ime) {
-            System.out.println("Caught Exception : "+ime.getMessage());
+            System.out.println("Caught Exception : "+ ime.getMessage());
         }
         return mood;
     }
