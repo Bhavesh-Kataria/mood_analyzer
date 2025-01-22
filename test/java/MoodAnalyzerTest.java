@@ -5,21 +5,16 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MoodAnalyzerTest {
-    MoodAnalyzer m;
-
-    @BeforeEach
-    void setup(){
-        m = new MoodAnalyzer();
-    }
 
     @Test
     @DisplayName("Testing Sad Mood Message returns Sad")
     void testAnalyzeMood_GivenSadMoodMessage_ShouldReturnSAD(){
         //arrange
         String expectedMood = "Sad";
+        MoodAnalyzer m = new MoodAnalyzer("I am currently feeling very sad too much");
 
         //act
-        String actualMood = m.analyzeMood("I am currently feeling very sad too much");
+        String actualMood = m.analyzeMood();
 
         //assert
         assertEquals(expectedMood,actualMood,"provided message did not produce SAD mood as expected");
@@ -30,9 +25,10 @@ public class MoodAnalyzerTest {
     void testAnalyzeMood_GivenHappyMoodMessage_ShouldReturnHAPPY(){
         //arrange
         String expectedMood = "Happy";
+        MoodAnalyzer m = new MoodAnalyzer("Today is a happy day");
 
         //act
-        String actualMood = m.analyzeMood("Today is a happy day");
+        String actualMood = m.analyzeMood();
 
         //assert
         assertEquals(expectedMood,actualMood,"provided message did not produce HAPPY mood as expected");
