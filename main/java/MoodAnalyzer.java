@@ -25,7 +25,8 @@ public class MoodAnalyzer {
                 throw new InvalidMoodException("User doesn't know his current mood or is not sure about it");
             }
         } catch (NullPointerException npe) {
-            System.out.println("NullPointerException : Mood cannot be null");
+//            System.out.println("NullPointerException : Mood cannot be null");
+              return "Happy";
         } catch (InvalidMoodException ime) {
             System.out.println("Caught Exception : "+ ime.getMessage());
         }

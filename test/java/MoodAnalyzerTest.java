@@ -33,4 +33,20 @@ public class MoodAnalyzerTest {
         //assert
         assertEquals(expectedMood,actualMood,"provided message did not produce HAPPY mood as expected");
     }
+
+    @Test
+    @DisplayName("Testing null Mood returns Happy")
+    void testAnalyzeMood_GivenNull_ShouldReturnHAPPY(){
+        //arrange
+        String expectedMood = "Happy";
+        MoodAnalyzer m = new MoodAnalyzer(null);
+
+        //act
+        String actualMood = m.analyzeMood();
+
+        //assert
+        assertEquals(expectedMood,actualMood,"provided null message did not produce HAPPY mood as expected");
+    }
+
+
 }
