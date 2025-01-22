@@ -1,5 +1,9 @@
 public class InvalidMoodException extends Exception{
-    InvalidMoodException(String str){
-        super(str);
+    ExceptionTypes et;
+    InvalidMoodException(ExceptionTypes et){
+        this.et = et;
+    }
+    public ExceptionTypes getExceptionType(){
+        return et;
     }
 }
